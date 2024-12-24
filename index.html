@@ -1,197 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recycle - Cryptocurrency for Recycling</title>
-  <style>
-    /* Стили CSS */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #81c784; /* Приятный зеленый фон */
-      color: #004d40; /* Темно-зеленый цвет текста */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center; /* Центрируем текст */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle Coin</title>
 
-    header {
-      background-color: #004d40;
-      color: white;
-      padding: 20px 0;
-      width: 100%;
-    }
+    <!-- Google Font for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    h1 {
-      margin: 0;
-    }
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    section {
-      padding: 20px;
-      margin: 20px 0;
-      width: 80%; /* Ограничиваем ширину */
-    }
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #81c784, #388e3c);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    h2 {
-      color: #00796b; /* Более светлый зеленый */
-    }
+        header {
+            padding: 20px;
+        }
 
-    button {
-      background-color: #004d40;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 20px;
-    }
+        h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+        }
 
-    button:hover {
-      background-color: #00796b; /* Цвет при наведении */
-    }
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-    ul li {
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recycle - Cryptocurrency for Recycling</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #81c784; /* Pleasant green background */
-      color: #004d40; /* Dark green text color */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
+        .content {
+            padding: 40px;
+            background: rgba(0, 77, 64, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
 
-    header {
-      background-color: #004d40;
-      color: white;
-      padding: 20px 0;
-      width: 100%;
-    }
+        .btn {
+            background-color: #388e3c;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-    h1 {
-      margin: 0;
-    }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #2e7d32;
+        }
 
-    section {
-      padding: 20px;
-      margin: 20px 0;
-      width: 80%;
-    }
+        .token-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 20px;
+        }
 
-    h2 {
-      color: #00796b;
-    }
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
 
-    button {
-      background-color: #004d40;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 20px;
-    }
+            .content {
+                padding: 20px;
+            }
+        }
 
-    button:hover {
-      background-color: #00796b;
-    }
+        /* Fixed Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 77, 64, 0.8);
+            padding: 10px;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
 
-    ul li {
-      margin: 5px 0;
-    }
+        .navbar li {
+            display: inline;
+            padding: 10px;
+        }
 
-    footer {
-      margin-top: 40px;
-      color: #004d40;
-    }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
 
-    /* Добавляем стили для радио плеера */
-    .radio-player {
-      margin-top: 30px;
-    }
-
-    audio {
-      width: 100%;
-      max-width: 400px;
-    }
-  </style>
+        .navbar a:hover {
+            color: #81c784;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Recycle - A Green Future with Cryptocurrency</h1>
-  </header>
+    <div class="navbar fade-in">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 
-  <section class="info">
-    <h2>What is Recycle?</h2>
-    <p>
-      **Recycle** is a cryptocurrency designed to motivate recycling by rewarding users with tokens for their waste recycling efforts. This system aims to connect individuals, recycling plants, and organizations to build a more sustainable planet.
-    </p>
-  </section>
+    <header class="fade-in">
+        <h1>Recycle Coin</h1>
+    </header>
 
-  <section class="how-it-works">
-    <h2>How it Works</h2>
-    <p>
-      Users earn **Recycle Tokens** by participating in the recycling program. Tokens are then used to reward participants and incentivize businesses and municipalities to adopt eco-friendly practices.
-    </p>
-    <button id="recycleButton">Start Recycling</button>
-  </section>
+    <div class="content fade-in">
+        <h2>Earn Recycle Tokens</h2>
+        <p>Start recycling today and earn Recycle Tokens for your efforts. Together, we can save the planet!</p>
 
-  <section class="partners">
-    <h2>Our Partners</h2>
-    <p>
-      Our partners include recycling plants, eco-conscious companies, and governments working together to create an effective recycling system powered by blockchain and cryptocurrency.
-    </p>
-    <ul>
-      <li>GreenTech Recycling</li>
-      <li>EcoWaste Solutions</li>
-      <li>Global Green Initiative</li>
-    </ul>
-  </section>
+        <button class="btn" id="generateTokens">Generate Tokens</button>
 
-  <!-- Вставляем радио плеер -->
-  <section class="radio-player">
-    <h2>Listen to Our Radio</h2>
-    <audio controls>
-      <source src="https://your-radio-stream-url.com" type="audio/mpeg"> <!-- Замените на ваш URL -->
-      Your browser does not support the audio element.
-    </audio>
-  </section>
+        <div class="token-display" id="tokenCount">You have earned 0 Recycle Tokens!</div>
+    </div>
 
-  <footer>
-    <p>&copy; 2024 Recycle. All rights reserved.</p>
-  </footer>
+    <footer class="fade-in" style="margin-top: 40px;">
+        <p>Made with 💚 for a cleaner future. <i class="fas fa-recycle"></i></p>
+    </footer>
 
-  <script>
-    // JavaScript for user interaction
-    document.getElementById('recycleButton').addEventListener('click', function() {
-      alert('You have earned 10 Recycle Tokens for your recycling efforts!');
-    });
-  </script>
+    <script>
+        // Token Generation Interaction
+        document.getElementById('generateTokens').addEventListener('click', function() {
+            let tokens = Math.floor(Math.random() * 100);
+            document.getElementById('tokenCount').innerText = `You have earned ${tokens} Recycle Tokens!`;
+        });
+    </script>
 </body>
 </html>
