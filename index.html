@@ -4,62 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recycle Coin</title>
+
+    <!-- Google Font for elegant typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Web3.js for blockchain interaction -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+
     <style>
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(to bottom, #81c784, #388e3c); color: white; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin: 0; padding: 0; }
-        header { padding: 20px; }
-        h1 { font-size: 3rem; margin: 0; text-transform: uppercase; }
-        .fade-in { opacity: 0; animation: fadeIn 1.5s forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .content { padding: 40px; background: rgba(0, 77, 64, 0.8); border-radius: 10px; max-width: 600px; width: 100%; box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); }
-        .btn { background-color: #388e3c; color: white; padding: 15px 32px; font-size: 1.2rem; cursor: pointer; border-radius: 5px; transition: transform 0.3s, background-color 0.3s; }
-        .btn:hover { transform: scale(1.1); background-color: #2e7d32; }
-        .token-display { font-size: 1.5rem; margin-top: 20px; }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(0, 77, 64, 0.8); padding: 10px; z-index: 1000; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); }
-        .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: space-around; }
-        .navbar a { text-decoration: none; color: white; font-size: 1.1rem; font-weight: 600; }
-        .navbar a:hover { color: #81c784; }
-        footer { margin-top: 40px; }
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #81c784, #388e3c);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            padding: 40px;
+            background: rgba(0, 77, 64, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .btn {
+            background-color: #388e3c;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #2e7d32;
+        }
+
+        .token-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 20px 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar fade-in">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
     <header class="fade-in">
         <h1>Recycle Coin</h1>
     </header>
 
-    <div id="home" class="content fade-in">
+    <div class="content fade-in">
         <h2>Earn Recycle Tokens</h2>
         <p>Start recycling today and earn Recycle Tokens for your efforts. Together, we can save the planet!</p>
+
         <button class="btn" id="generateTokens">Generate Tokens</button>
+
         <div class="token-display" id="tokenCount">You have earned 0 Recycle Tokens!</div>
     </div>
 
-    <div id="about" class="content fade-in" style="margin-top: 30px;">
+    <section id="about" class="fade-in">
         <h2>About</h2>
-        <p>Recycle Coin is a project aimed at promoting eco-friendly habits and rewarding users with digital tokens for their recycling efforts. Every token earned contributes to making the planet cleaner and greener!</p>
-    </div>
+        <p>Recycle Coin is a blockchain-based initiative aimed at encouraging eco-friendly practices through token rewards.</p>
+    </section>
 
-    <div id="contact" class="content fade-in" style="margin-top: 30px;">
+    <section id="contact" class="fade-in">
         <h2>Contact</h2>
-        <p>If you have any questions or need support, feel free to reach out:</p>
-        <p>Email: <a href="mailto:13gaudi@gmail.com">13gaudi@gmail.com</a></p>
-    </div>
+        <p>Email us at: <a href="mailto:13gaudi@gmail.com" style="color: #81c784;">13gaudi@gmail.com</a></p>
+    </section>
 
     <footer class="fade-in">
         <p>Made with 💚 for a cleaner future. <i class="fas fa-recycle"></i></p>
     </footer>
 
     <script>
+        // Web3.js initialization
         if (typeof window.ethereum !== 'undefined') {
             console.log('MetaMask is installed!');
         }
@@ -67,7 +165,15 @@
         const web3 = new Web3(window.ethereum);
         const tokenAddress = '0x73731b3605a01a60308A57d4F8B0BDFfA8691eAD';
         const tokenABI = [
-            { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "name": "balance", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }
+            {
+                "constant": true,
+                "inputs": [{ "name": "_owner", "type": "address" }],
+                "name": "balanceOf",
+                "outputs": [{ "name": "balance", "type": "uint256" }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
         ];
 
         const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
