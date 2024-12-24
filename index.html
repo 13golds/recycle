@@ -11,6 +11,9 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <!-- Web3.js for blockchain interaction -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+
     <style>
         /* Global Styles */
         body {
@@ -161,11 +164,35 @@
     </footer>
 
     <script>
-        // Token Generation Interaction
-        document.getElementById('generateTokens').addEventListener('click', function() {
-            let tokens = Math.floor(Math.random() * 100);
-            document.getElementById('tokenCount').innerText = `You have earned ${tokens} Recycle Tokens!`;
-        });
+        // Web3.js initialization
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is installed!');
+        }
+
+        const web3 = new Web3(window.ethereum);
+        const tokenAddress = '0x73731b3605a01a60308A57d4F8B0BDFfA8691eAD';
+        const tokenABI = [
+            {
+                "constant": true,
+                "inputs": [{ "name": "_owner", "type": "address" }],
+                "name": "balanceOf",
+                "outputs": [{ "name": "balance", "type": "uint256" }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ];
+
+        const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
+
+        async function getBalance() {
+            const accounts = await web3.eth.requestAccounts();
+            const userAddress = accounts[0];
+            const balance = await tokenContract.methods.balanceOf(userAddress).call();
+            document.getElementById('tokenCount').innerText = `You have earned ${web3.utils.fromWei(balance, 'ether')} Recycle Tokens!`;
+        }
+
+        document.getElementById('generateTokens').addEventListener('click', getBalance);
     </script>
 </body>
 </html>
